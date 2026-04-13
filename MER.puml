@@ -1,0 +1,79 @@
+@startuml
+!theme plain
+title Diseño_BD-Biblioteca
+
+' Definición de entidades
+entity "BookCategories" as BC {
+   * CategoryID : INT <<PK>>
+   --
+   CategoryName : VARCHAR(50)
+   Description: TEXT
+}
+
+entity "Books" as B {
+   * BookID : INT <<PK>>
+   --
+   CategoryID : INT <<FK>>
+   Title : VARCHAR(100)
+   Author : VARCHAR(100)
+   Genre : VARCHAR(50)
+   PublicationYear: INT
+   AvailableCopies: INT
+}
+
+entity "Users" as U {
+   * UserID : INT <<PK>>
+   --
+   FirstName : VARCHAR(50)
+   LastName : VARCHAR(50)
+   Email : VARCHAR(100)
+   PhoneNumber : VARCHAR(15)
+}
+
+entity "Staff" as S {
+   * StaffID : INT <<PK>>
+   --
+   FirstName : VARCHAR(50)
+   LastName : VARCHAR(50)
+   Role : VARCHAR(50)
+   Email : VARCHAR(100)
+}
+
+entity "Loans" as L {
+   * LoanID : INT <<PK>>
+   --
+   UserID : INT <<FK>>
+   BookID : INT <<FK>>
+   LoanDate : DATE
+   ReturnDate : DATE
+}
+
+entity "Reservations" as R {
+   * ReservationID : INT <<PK>>
+   --
+   UserID : INT <<FK>>
+   BookID : INT <<FK>>
+   ReservationDate: DATE
+   Status : VARCHAR(20)
+}
+
+' ========== RELACIONES ==========
+
+' BookCategories 1 --- N Books
+BC ||--o{ B : "tiene"
+
+' Users 1 --- N Loans
+U ||--o{ L : "realiza"
+
+' Books 1 --- N Loans
+B ||--o{ L : "prestado en"
+
+' Users 1 --- N Reservations
+U ||--o{ R : "hace"
+
+' Books 1 --- N Reservations
+B ||--o{ R : "reservado en"
+
+' Staff es independiente (sin relaciones en el esquema actual)
+
+@enduml

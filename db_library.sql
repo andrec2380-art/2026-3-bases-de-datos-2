@@ -1,3 +1,7 @@
+-- Crear Base de Datos --
+CREATE DATABASE IF NOT EXISTS db_library;
+
+--Crear Tablas--
 CREATE TABLE BookCategories (
     CategoryID INT AUTO_INCREMENT PRIMARY KEY,
     CategoryName VARCHAR(50) NOT NULL,
@@ -74,9 +78,9 @@ VALUES
 ('The Innovators', 'Walter Isaacson', 'Technology', 2014, 2, 4),
 ('The Diary of a Young Girl', 'Anne Frank', 'History', 1947, 3, 5),
 ('Steve Jobs', 'Walter Isaacson', 'Biography', 2011, 4, 6),
-('Harry Potter and the Sorcerer's Stone', 'J.K. Rowling', 'Fantasy', 1997, 6, 7),
+('Harry Potter and the Sorcerer\'s Stone', 'J.K. Rowling', 'Fantasy', 1997, 6, 7),
 ('The Girl with the Dragon Tattoo', 'Stieg Larsson', 'Mystery', 2005, 2, 8),
-('Charlotte's Web', 'E.B. White', 'Children', 1952, 7, 9),
+('Charlotte\'s Web', 'E.B. White', 'Children', 1952, 7, 9),
 ('Introduction to Algorithms', 'Cormen et al.', 'Education', 2009, 3, 10);
 
 INSERT INTO Users (FirstName, LastName, Email, PhoneNumber)
